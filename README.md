@@ -26,3 +26,22 @@ Add also to your array the painting thumbnails present in the result page file (
 Test against 2 other similar result pages to make sure it works against different layouts. (Pages that contain the same kind of carrousel. Don't necessarily have to be paintings.)
 
 The suggested time for this challenge is 4 hours. But, you can take your time and work more on it if you want.
+
+## Setup
+
+To install all required gems:
+```
+bundle install
+```
+
+## Running
+
+You may either play around with the script via IRB console
+```
+bin/console
+```
+
+Or simply run all the RSpec test cases:
+```
+bundle exec rspec
+```
