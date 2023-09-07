@@ -15,11 +15,10 @@ module SerpApiCodeChallenge
 
     def run
       root_node.at_css(CAROUSEL_TAG).css(ITEM_CLASS).map do |node|
-        ArtworkBuilder.new(name: extract_name(node),
-                           extensions: extract_extensions(node),
-                           link: extract_link(node),
-                           image: extract_image(node))
-                      .build
+        { 'name' => extract_name(node),
+          'extensions' => extract_extensions(node),
+          'link' => extract_link(node),
+          'image' => extract_image(node) }
       end
     end
 

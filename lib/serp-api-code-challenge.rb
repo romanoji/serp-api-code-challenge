@@ -14,7 +14,8 @@ loader.setup
 module SerpApiCodeChallenge  
   def self.run
     File.open('resources/van-gogh-paintings.html', 'r') do |file|
-      artworks = Scraper.new(file).run
+      data = Scraper.new(file).run
+      artworks = data.map { |d| ArtworkBuilder.new(**d.transform_keys(&:to_sym)).build }
 
       { 'artworks' => artworks }
     end
@@ -29,8 +30,8 @@ module SerpApiCodeChallenge
     actual_results = SerpApiCodeChallenge.run['artworks']
 
     puts "Incorrect number of items in dataset" if expected_results.size != actual_results.size
-    puts "Data does not match (#{(expected_results - actual_results).size} differences)" unless (expected_results - actual_results).empty?
+    puts "Data does not match (found #{(expected_results - actual_results).size} differences)" unless (expected_results - actual_results).empty?
 
-    puts 'Great!'
+    puts 'It works. Great job!'
   end
 end

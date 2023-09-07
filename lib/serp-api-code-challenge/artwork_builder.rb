@@ -12,7 +12,7 @@ module SerpApiCodeChallenge
     def build
       { 'name' => name,
         'link' => GOOGLE_BASE_URL + link,
-        'image' => image,
+        'image' => image
       }.tap do |a|
         a['extensions'] = extensions unless extensions.empty?
       end
